@@ -1,2 +1,2 @@
 var hola = "a"
-hola.
+hola
