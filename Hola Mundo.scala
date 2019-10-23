@@ -1,3 +1,3 @@
-def main(args: Array[string]): Unit = {
+def main(args: Array[String]): Unit = {
 
 }
