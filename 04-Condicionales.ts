@@ -31,7 +31,7 @@ const casadoYMosero = estaCasado && soyMosero;
 if(casadoYMosero){
     console.log("casado y mosero");
 } else {
-    console.log("O casado o Mosero o Nada"); //tsc --target ES6 02-variables-tp.ts   
+    console.log("O casado o Mosero o Nada"); 
 }
 
 //AND --> && Amperset
