@@ -38,5 +38,6 @@
 27.- ¿Desea hacer otra operación?
      Si si ir a 2
      Si no ir a 28
-28.- Finalizar Programa
+28.- Fin
+
 */
