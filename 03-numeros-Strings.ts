@@ -37,7 +37,7 @@ console.log(saludoEdad);
 const saludoCompleto: `${mensaje}\n${saludo}`;
 console.log(saludoCompleto);
 //Contamos los elementos
-const nombreLongitud = "Ariel Thomàs";
+const nombreLongitud = " Ariel Thomas ";
 console.log(nombreLongitud.length);
 //Eliminar espacios al principio y al final
 console.log(nombreLongitud.trim());
@@ -45,12 +45,12 @@ console.log(nombreLongitud.trim());
 console.log(nombreLongitud.toUpperCase());
 //console.log(nombreLongitud.toLowerCase());
 //console.log(nombreLongitud.replace("e","o"));
-//console.log(nombreLongitud.replace("a","o"));
-console.log(nombreLongitud);
-console.log(nombreLongitud.replace("x","o"));
-console.log(nombreLongitud);
 console.log(nombreLongitud.replace("a","o"));
-console.log(nombreLongitud);
+//console.log(nombreLongitud);
+console.log(nombreLongitud.replace("x","o"));
+//console.log(nombreLongitud);
+//console.log(nombreLongitud.replace("a","o"));
+//console.log(nombreLongitud);
 console.log(nombreLongitud.search("z")); //-1
 console.log(nombreLongitud.search("e")); // Si encuentra me dice la posiciòn en la que se encuentra
 console.log(nombreLongitud.slice(0,5));
