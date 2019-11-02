@@ -94,3 +94,108 @@ Imprimir resultado
 Fin
 */
 
+//TRUTY :
+const nombreVacio = "";
+if(""){ //No necesitan estar igualados a nada
+    console.log("Truty");
+} else {
+    console.log("Falsy");
+}
+
+if("abc"){
+    console.log("Truty"); //Si un String esta lleno de algo es Truty
+} else {
+    console.log("Falsy");
+}
+
+if(-1){
+    console.log("Truty"); //Truty
+} else {
+    console.log("Falsy");
+}
+
+if(1.3232){
+    console.log("Truty"); //Truty
+} else {
+    console.log("Falsy");
+}
+
+if(0){
+    console.log("Truty"); //Falsy
+} else {
+    console.log("Falsy");
+}
+
+if(-1){
+    console.log("Truty"); //Truty
+} else {
+    console.log("Falsy");
+}
+
+if(1.3232){
+    console.log("Truty"); //Truty
+} else {
+    console.log("Falsy");
+}
+
+if(null){
+    console.log("Truty"); //Falsy
+} else {
+    console.log("Falsy");
+}
+
+if(undefined){
+    console.log("Truty"); //Falsy
+} else {
+    console.log("Falsy");
+}
+
+const calculo = ""; //sumar restar multiplicar divivdir
+switch(calculo) {
+    case "sumar": // compara 1 vez
+        break;
+    case "restar": //2
+        break;
+    case "multiplicar": //3
+        break; 
+    case "dividir": //4
+        break;
+    default:
+
+}
+
+/*const edadString = prompt("Ingresar numero");
+const edad = Number(edadString);
+switch(edad) {
+    case edad > 0 && edad <= 6:
+        console.log("Usted es Guagua")
+        break;
+}
+*/
+
+const edadString = prompt("Ingresar numero");
+const edad = Number(edadString);
+if ( edad > 0 && edad <= 6) {
+    console.log("Usted es Guagua")
+} else {
+    if (edad > 6 && edad <= 18) {
+    console.log("Usted es Guambra")
+} else  
+   if (edad > 18 && edad <= 65) { 
+    console.log("Usted es Longo")
+} else {
+   if ( edad > 66 && edad < 100) {
+   console.log("Usted es Ruku") 
+} else (edad > 100) {
+    console.log("Usted ya esta muerto")
+}}}
+
+//6 Guagua 
+//18 Guambra
+//65 Longo
+//66 Ruku
+
+// FALSY : 
+
+
+
