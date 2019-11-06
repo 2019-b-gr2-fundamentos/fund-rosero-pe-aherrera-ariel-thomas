@@ -1,6 +1,6 @@
-const numeroUno = 1; //camelCase
-const numeroDos = 2;
-let resultado = 0;
+var numeroUno = 1; //camelCase
+var numeroDos = 2;
+var resultado = 0;
 //Suma
 resultado = 1 + 2;
 //Resta 
@@ -25,17 +25,17 @@ console.log("pera" + 2);
 //numero_uno
 //numerOuno -> 
 //STRINGS
-const mensaje = "\"Hola mundo\"";
-const saludo = '\'Adio\s Mundo\'';
+var mensaje = "\"Hola mundo\"";
+var saludo = '\'Adio\s Mundo\'';
 console.log(mensaje + "1\t\t\t 3\n" + saludo);
 //Template strings
-const edad = 30;
-const saludoEdad = `Mi edad es: ${edad}`;
+var edad = 30;
+var saludoEdad = "Mi edad es: " + edad;
 console.log(saludoEdad);
-const saludoCompleto = `${mensaje}\n${saludo}`;
+var saludoCompleto = mensaje + "\n" + saludo;
 console.log(saludoCompleto);
 //Contamos los elementos
-const nombreLongitud = "Ariel Thomàs";
+var nombreLongitud = " Ariel Thomas ";
 console.log(nombreLongitud.length);
 //Eliminar espacios al principio y al final
 console.log(nombreLongitud.trim());
@@ -43,12 +43,12 @@ console.log(nombreLongitud.trim());
 console.log(nombreLongitud.toUpperCase());
 //console.log(nombreLongitud.toLowerCase());
 //console.log(nombreLongitud.replace("e","o"));
-//console.log(nombreLongitud.replace("a","o"));
-console.log(nombreLongitud);
-console.log(nombreLongitud.replace("x", "o"));
-console.log(nombreLongitud);
 console.log(nombreLongitud.replace("a", "o"));
-console.log(nombreLongitud);
+//console.log(nombreLongitud);
+console.log(nombreLongitud.replace("x", "o"));
+//console.log(nombreLongitud);
+//console.log(nombreLongitud.replace("a","o"));
+//console.log(nombreLongitud);
 console.log(nombreLongitud.search("z")); //-1
 console.log(nombreLongitud.search("e")); // Si encuentra me dice la posiciòn en la que se encuentra
 console.log(nombreLongitud.slice(0, 5));

@@ -126,18 +126,6 @@ if(0){
     console.log("Falsy");
 }
 
-if(-1){
-    console.log("Truty"); //Truty
-} else {
-    console.log("Falsy");
-}
-
-if(1.3232){
-    console.log("Truty"); //Truty
-} else {
-    console.log("Falsy");
-}
-
 if(null){
     console.log("Truty"); //Falsy
 } else {
@@ -173,22 +161,22 @@ switch(edad) {
 }
 */
 
-const edadString = prompt("Ingresar numero");
+const edadString = prompt("Ingrese su edad ")
 const edad = Number(edadString);
-if ( edad > 0 && edad <= 6) {
-    console.log("Usted es Guagua")
+if(edad >=0 && edad<=6) {
+console.log("Guagua");
+} else if (edad >6 && edad<=18) {
+console.log("Guambra");
+} else if (edad>18 && edad<=65 ) {
+console.log("Longo");
+} else if (edad>65 && edad<=100) {
+console.log("Ruko");    
+} else if (edad>100) {
+console.log("Usted ya fallecio");
 } else {
-    if (edad > 6 && edad <= 18) {
-    console.log("Usted es Guambra")
-} else  
-   if (edad > 18 && edad <= 65) { 
-    console.log("Usted es Longo")
-} else {
-   if ( edad > 66 && edad < 100) {
-   console.log("Usted es Ruku") 
-} else (edad > 100) {
-    console.log("Usted ya esta muerto")
-}}}
+console.log ("Usted aun no nace");
+}
+
 
 //6 Guagua 
 //18 Guambra
