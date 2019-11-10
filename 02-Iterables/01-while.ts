@@ -16,10 +16,14 @@ do {
         default:
         console.log("Gordito");
     }
-} while ( vecesQueHeComido < 3 ) {
-    vecesQueHeComido = 0;
-    vecesQueHeComido = vecesQueHeComido + 1;
-    switch (vecesQueHeComido) {
+} while ( vecesQueHeComido < 3 )
+
+
+let vecesQueComo = 0;
+while ( vecesQueComo < 3 ) {
+    console.log("Vamos a comer");
+    vecesQueComo = vecesQueComo + 1;
+    switch (vecesQueComo) {
         case 1:
         console.log("Desayuno");
         break;
@@ -31,8 +35,10 @@ do {
         break;
         default:
         console.log("Gordito");
+        break;
 }  
 }
+
 /* 
 1   Analisis socieconómico y político
 2   Algebra Lineal 
@@ -76,5 +82,3 @@ console.log(`Hice ${analisis} deberes de Análisis`)
 
 //console.log("Hice ${analisis} deberes de analisis")
 // template strings --> tilde invertida = alt + 96
-
-

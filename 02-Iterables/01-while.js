@@ -17,10 +17,11 @@ do {
             console.log("Gordito");
     }
 } while (vecesQueHeComido < 3);
-{
-    vecesQueHeComido = 0;
-    vecesQueHeComido = vecesQueHeComido + 1;
-    switch (vecesQueHeComido) {
+var vecesQueComo = 0;
+while (vecesQueComo < 3) {
+    console.log("Vamos a comer");
+    vecesQueComo = vecesQueComo + 1;
+    switch (vecesQueComo) {
         case 1:
             console.log("Desayuno");
             break;
@@ -32,6 +33,7 @@ do {
             break;
         default:
             console.log("Gordito");
+            break;
     }
 }
 /*

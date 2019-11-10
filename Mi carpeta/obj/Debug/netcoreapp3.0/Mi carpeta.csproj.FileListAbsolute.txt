@@ -1,0 +1,11 @@
+C:\Users\USER\Documents\GitHub\fund-rosero-penaherrera-ariel-thomas\Mi carpeta\bin\Debug\netcoreapp3.0\Mi carpeta.exe
+C:\Users\USER\Documents\GitHub\fund-rosero-penaherrera-ariel-thomas\Mi carpeta\bin\Debug\netcoreapp3.0\Mi carpeta.deps.json
+C:\Users\USER\Documents\GitHub\fund-rosero-penaherrera-ariel-thomas\Mi carpeta\bin\Debug\netcoreapp3.0\Mi carpeta.runtimeconfig.json
+C:\Users\USER\Documents\GitHub\fund-rosero-penaherrera-ariel-thomas\Mi carpeta\bin\Debug\netcoreapp3.0\Mi carpeta.runtimeconfig.dev.json
+C:\Users\USER\Documents\GitHub\fund-rosero-penaherrera-ariel-thomas\Mi carpeta\bin\Debug\netcoreapp3.0\Mi carpeta.dll
+C:\Users\USER\Documents\GitHub\fund-rosero-penaherrera-ariel-thomas\Mi carpeta\bin\Debug\netcoreapp3.0\Mi carpeta.pdb
+C:\Users\USER\Documents\GitHub\fund-rosero-penaherrera-ariel-thomas\Mi carpeta\obj\Debug\netcoreapp3.0\Mi carpeta.csprojAssemblyReference.cache
+C:\Users\USER\Documents\GitHub\fund-rosero-penaherrera-ariel-thomas\Mi carpeta\obj\Debug\netcoreapp3.0\Mi carpeta.AssemblyInfoInputs.cache
+C:\Users\USER\Documents\GitHub\fund-rosero-penaherrera-ariel-thomas\Mi carpeta\obj\Debug\netcoreapp3.0\Mi carpeta.AssemblyInfo.cs
+C:\Users\USER\Documents\GitHub\fund-rosero-penaherrera-ariel-thomas\Mi carpeta\obj\Debug\netcoreapp3.0\Mi carpeta.dll
+C:\Users\USER\Documents\GitHub\fund-rosero-penaherrera-ariel-thomas\Mi carpeta\obj\Debug\netcoreapp3.0\Mi carpeta.pdb
