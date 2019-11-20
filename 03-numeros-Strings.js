@@ -1,6 +1,6 @@
-const numeroUno = 1; //camelCase
-const numeroDos = 2;
-let resultado = 0;
+var numeroUno = 1; //camelCase
+var numeroDos = 2;
+var resultado = 0;
 //Suma
 resultado = 1 + 2;
 //Resta 
