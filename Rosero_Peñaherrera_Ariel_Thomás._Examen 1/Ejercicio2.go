@@ -5,10 +5,6 @@ Cf Moto, Derbi, Ducati, Fantic, Gilera, Hanway, Harley-Davidso, Husqvarna
 Hyosung, Indian, Keeway, KTM, Kymco, Macbor, Malaguti, Mash, MITT, Mondial, 
 Montesa, MV Agusta, NIU, Norton, Piaggio, Quadron, Riya, Scomadi, 
 Scrambler Ducati, Sherco, Suzuki, SWM, SYM, Vespa, Voge, Zontes
-
-
-
-
 */
 package main
 
