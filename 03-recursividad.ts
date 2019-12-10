@@ -21,24 +21,25 @@ function main() {
 
 
 
-const arreglo : number[] = [1,2,3,4,5];
+const arreglot : number[] = [1,2,3,4,5];
 
-function recorrerUnArreglo(arreglo: number[] , numeroIndice: number ): void {
-    console.log(arreglo);
+function recorrerUnArreglo(arreglot: number[] , numeroIndice: number ): void {
+    console.log(arreglot);
     if (numeroIndice == 4){
     console.log(`Se termino`);
 } else {
     const nuevoIndice = numeroIndice + 1;
-    console.log( arreglo [nuevoIndice] );
-    recorrerUnArreglo(arreglo, nuevoIndice)
+    console.log( arreglot [nuevoIndice] );
+    recorrerUnArreglo(arreglot, nuevoIndice)
 }
 }
 
 function man() {
-    recorrerUnArreglo( arreglo, 0)
+    recorrerUnArreglo( arreglot, 0)
 }
 
 //MATRICES
+function maint() { 
 const arregloDosDimensiones = 
 [[1,2,3,4],[4,5,6,7]]; //indice y longitud
 //i j k æ
@@ -48,40 +49,27 @@ const arregloDosDimensiones =
 //multiplicar el 0+2 * n-2 elemento 
 arregloDosDimensiones[0][0] //1
 arregloDosDimensiones[0][1] //2
-arregloDosDimensiones[1][0] //3
-arregloDosDimensiones[1][1] //4
+arregloDosDimensiones[1][0] //4
+arregloDosDimensiones[1][1] //5
 
 console.log(arregloDosDimensiones[0].length);
 console.log(arregloDosDimensiones[1].length);
 
-let tamañoA1 = arregloDosDimensiones[0].length;
-let tamañoA2 = arregloDosDimensiones[1].length;
-let m = 0;
-let indiceA1: number = arregloDosDimensiones[0][m]; 
+function productoCruz(vectores: number[][], indice, longitud) {
+    longitud = arregloDosDimensiones[1].length
+    indice = arregloDosDimensiones[0].length
+    let suma = 0;
+    let longitudv = 3;
+    let multiplicado = 0;
+    for(indice = 0; indice <=3; indice++){
+        longitud = longitudv - 1;
+        multiplicado = arregloDosDimensiones[0][indice] * arregloDosDimensiones[1][longitud]
+        suma = suma + multiplicado 
+        console.log(suma);;
 
-let l = arregloDosDimensiones[1].length;
-let indiceA2: number = arregloDosDimensiones[1][l];
-
-for(indiceA1 ; indiceA1 <= arregloDosDimensiones[0].length ; indiceA1 ++) {
-    for(m = 0 ; m <= 3 ; m++) {
     }
-    console.log(indiceA1);
 }
-
-for(indiceA2; indiceA2 == 0; indiceA2--) {
-    for (l = arregloDosDimensiones[1].length; l <= 0 ; l--){
-    console.log(`Vamos del Puctas`);
-    }
-    console.log(indiceA2);
 }
-
-
-
-//function productoCruz(vectores: number[][]): number[]{
-    //return [0,0, resultado]
-    
-//for(   )
-//}
 
 // [0,0. 1*7 + 2*6 + 3*5 + 4*4]
 

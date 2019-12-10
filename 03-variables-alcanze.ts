@@ -48,8 +48,7 @@ for(let i=0; i<5; i++) { //Bloque 1
     if(arregloFloron[i] == 1) { //Bloque 2 
         existeFloron = true;
     } 
-    }
-    
+    } 
     arregloFloron[i]
 }
 

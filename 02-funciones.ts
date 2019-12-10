@@ -72,5 +72,4 @@ function calculadora(){
     2.2.1) Ingresar primer numero
     2.2.2) Ingresar segundo numero
     2.2.3) Ejecutar la operacion
- 
 */
