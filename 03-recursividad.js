@@ -65,8 +65,29 @@ function maint() {
 3.4) 1er elemento + 1 = 2do elemento del segundo arreglo-
 3.5) Ultimo elemento -1 = penultimo del 2do Arreglo
 3.6) Sumar los elemetos.
+*/
+//Escriba un programa que verifique si dos matrices son
+// iguales (La matriz es de dos dimensiones n*m)
+// "n" y "m" pueden ser iguales o distintas 
+/*
+n=2, m=3
 
+1 2 3   2 3 4
+4 5 6   4 5 6
 
-
-
-*/ 
+*/
+//sumar todas las filas y todas las columnas
+function compararMatriz(matrizUno, matrizDos) {
+    return true;
+}
+compararMatriz([[2, 3], [3, 4]], [[2, 3], [3, 4]]); //true
+function valorM(columna) {
+    return matriz1.length;
+}
+function valorN(fila) {
+    var indice;
+    for (indice; indice = false; indice++) {
+        var filaIndice = matriz1[indice][0];
+    }
+    return fila;
+}
