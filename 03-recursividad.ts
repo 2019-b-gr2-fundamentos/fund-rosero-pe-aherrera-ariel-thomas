@@ -95,8 +95,4 @@ for(indiceA2; indiceA2 == 0; indiceA2--) {
 3.4) 1er elemento + 1 = 2do elemento del segundo arreglo-
 3.5) Ultimo elemento -1 = penultimo del 2do Arreglo
 3.6) Sumar los elemetos.
-
-
-
-
 */
