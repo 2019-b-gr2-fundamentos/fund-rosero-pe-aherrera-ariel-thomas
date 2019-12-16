@@ -75,8 +75,13 @@ function obtenerSegundaDimension(matrizUno: number[][]) :number | false {
         } 
         if ( longitudActualMinima == -1 ) { 
             longitudActualMinima = longitudActual;      
+        } else { 
+            if(longitudActual < longitudActualMinima) {
+
+            }
+        }
 }
-}
+return false; 
 }
 compararMatriz( [[2,3],[3,4]] , [[2,3],[3,4]]) //true
 
