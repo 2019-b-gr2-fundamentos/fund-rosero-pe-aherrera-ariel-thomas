@@ -12,80 +12,114 @@ n=2, m=3
 
 //sumar todas las filas y todas las columnas
 
-function compararMatriz(
+const arregloMatriz = [
+    [1,2],
+    [3,4,5],
+    [6,7,8],
+    [9],
+]
+
+
+function compararMatrices(
     matrizUno: number[][],
     matrizDos: number[][]
-) : boolean {
-    return true;
+): boolean {
+    const matrizUnoPrimeraDimension = obtenerPrimeraDimension(matrizUno);
+    const matrizUnoSegundaDimension = obtenerSegundaDimension(matrizUno);
+    const matrizDosPrimeraDimension = obtenerPrimeraDimension(matrizDos);
+    const matrizDosSegundaDimension = obtenerSegundaDimension(matrizDos);
+    console.log(matrizUnoPrimeraDimension);
+    console.log(matrizUnoSegundaDimension);
+    console.log(matrizDosPrimeraDimension);
+    console.log(matrizDosSegundaDimension);
+
+   return true; 
 }
 
-const arregloMatriz = [ [1,2], [3,4,5] , [6,7,8], [9] ]
-
-function verificarTodosLosElementosDeUnArregloSonArreglo(
-    arreglo: any[] 
-) :boolean {
-    for( let i=0 ; i< arreglo.length ; i++ ) {  
-        const elementoActual = arreglo[i]; 
-        const esUnArreglo = typeof elementoActual == `object` && elementoActual.indexOf //Truty  
-        if (!esUnArreglo) {
-            console.log(`No es un arreglo`);
-            return false;
-        }
-}
-return true; 
-}
-
-
-function verificarTamanioDeCadaArregloDentroDelArreglo(matrizUno: number[][]) :boolean {
-    const logitudDelPrimerArreglo = matrizUno[0].length;
-    const esValido = verificarTodosLosElementosDeUnArregloSonArreglo(matrizUno);  //sacar longitud maxima y minima
-    if(esValido) {  
-    for( let i = 1 ; i <= matrizUno.length ; i++ ) { 
-        const logitudDeMasArreglo = matrizUno[i].length;
-        if ( logitudDeMasArreglo == logitudDelPrimerArreglo ) {
-            return true; 
-        } else {
-            return false; 
-        }
-        }
-    }
-} 
-
-function obtenerPrimeraDimension(matrizUno: number[][]) :number | false {
-    //VALIDACIONES
-    //Verificar que todos sean arreglos
-    const esValido = verificarTodosLosElementosDeUnArregloSonArreglo(matrizUno);
-    if(esValido) {
-    const primeraDimensionArreglo = matrizUno.length;
-    return primeraDimensionArreglo
-    } else {
+function obtenerPrimeraDimension(matrizUno: number[][]):number | boolean{
+    // VALIDACIONES = verificar que todos sean los arreglos
+    const esValido = verificarTodosLosElementosDeUnArregloSonArreglos(matrizUno);
+    if(esValido){
+        const primeraDimensionArrelgo = matrizUno.length;
+        return primeraDimensionArrelgo;
+    }else{
         return false;
     }
 }
 
-function obtenerSegundaDimension(matrizUno: number[][]) :number | false {
-    const esValido = verificarTodosLosElementosDeUnArregloSonArreglo(matrizUno);
-    let longitudActualMaxima = 0;  //Auxiliar: Guardar ek valor y mantenerlo durante el tiempo 
-    let longitudActualMinima = -1; 
-    for (let i=0 ; i < matrizUno.length ; i++) {
-        const elementoActual = matrizUno[i]; //arreglo 
-        const longitudActual = elementoActual.length //segunda dimension 
-        if (longitudActualMaxima < longitudActual) {
-            longitudActualMaxima = longitudActual;  
-        } 
-        if ( longitudActualMinima == -1 ) { 
-            longitudActualMinima = longitudActual;      
-        } else { 
-            if(longitudActual < longitudActualMinima) {
-
+function obtenerSegundaDimension(matrizUno: number[][]):number | boolean{
+    const esValido = verificarTodosLosElementosDeUnArregloSonArreglos(matrizUno);
+    if(esValido){
+        let longitudActualMaxima = 0; // Variable Auxiliar: GUARDAR EL VALOR Y MANTENERLO DURANTE TODA LA ITERACION
+        let longitudActualMinima = -1; // auxiliar 
+        for(let i = 0; i < matrizUno.length; i++){
+            const elementoActual = matrizUno[i]; // arreglo
+            const longitudActual = elementoActual.length // segunda dimension
+            if(longitudActualMaxima < longitudActual){
+                longitudActualMaxima = longitudActual;
+            }
+            if(longitudActualMinima == -1){
+                longitudActualMinima = longitudActual;
+            }else{
+                if(longitudActual < longitudActualMinima && longitudActualMinima >= 0){
+                    longitudActualMinima = longitudActual;
             }
         }
+        }
+        if(longitudActualMaxima != longitudActualMinima){
+            return false;
+        }else{
+            return matrizUno[0].length;
+        }
+    }else{
+        return false;
+    }
+    
 }
-return false; 
-}
-compararMatriz( [[2,3],[3,4]] , [[2,3],[3,4]]) //true
 
-function mainArreglo() {
-    //compararMatriz()
+function verificarTodosLosElementosDeUnArregloSonArreglos(
+    arreglo: any[]
+):boolean{
+    for(let i = 0; i < arreglo.length; i++){
+        const elementoActual = arreglo[i];
+        const esUnArreglo = typeof elementoActual == 'object' && elementoActual.indexOf // Truty
+        if(!esUnArreglo){
+            console.log('No es un arreglo');
+            return false;
+        }
+    }
+    return true;
 }
+
+function main(){
+    const matrizUno = [
+        [1,2],
+        [1]
+    ]
+    const matrizDos = [
+        [1,2],
+        [3,4]
+    ]
+    compararMatrices(matrizUno, matrizDos);
+}
+
+
+
+/* function verificarTamañoDeCadaArregloDentroDelArreglo(matrizUno: number[][]):boolean{
+    const esValido = verificarTodosLosElementosDeUnArregloSonArreglos(matrizUno);
+    const longitudPrimerArreglo = matrizUno[0].length;
+    if(esValido){
+    for(let i = 1; i <= matrizUno.length ; i++){
+        const longitudDemasArreglos = matrizUno[i].length;
+        if(longitudPrimerArreglo == longitudDemasArreglos){
+            return true;
+        }else{
+            return false;
+        }
+    }
+}
+}
+*/
+
+
 
