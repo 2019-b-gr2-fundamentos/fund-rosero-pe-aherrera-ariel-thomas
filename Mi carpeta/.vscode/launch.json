@@ -18,6 +18,8 @@
             "request": "launch",
             "name": "Debug matrices",
             "program": "${workspaceFolder}/04-matrices.js",
+            "name": "Launch Program",
+            "program": "${workspaceFolder}/app.js",
             "skipFiles": [
                 "<node_internals>/**"
             ]
@@ -28,6 +30,9 @@
             "type": "node",
             "request": "launch",
             "name": "Launch Program",
+            "type": "node",
+            "request": "launch",
+            "name": "Debug Matrices",
             "skipFiles": [
                 "<node_internals>/**"
             ],
