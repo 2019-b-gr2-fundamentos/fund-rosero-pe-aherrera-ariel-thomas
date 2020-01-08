@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "librerias_ariel": "^1.0.0"
+    "librerias_ariel": "^1.0.0",
+    "operaciones-basicas-calculadora": "^1.1.0"
   }
 }
