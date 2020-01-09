@@ -1,6 +1,6 @@
 {
   "name": "05-proyecto",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -9,7 +9,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "calculadora_fr": "1.8.0",
     "librerias_ariel": "^1.0.0",
-    "operaciones-basicas-calculadora": "^1.1.0"
+    "operaciones-basicas-calculadora": "1.3.0",
+    "libreria_operations": "1.4.0"
   }
 }

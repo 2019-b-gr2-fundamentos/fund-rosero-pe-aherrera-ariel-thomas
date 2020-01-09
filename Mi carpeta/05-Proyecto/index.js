@@ -4,6 +4,8 @@
 var sumaLibreria = require('librerias_ariel/lib/suma');
 var respuesta = sumaLibreria(1, 2);
 console.log("La respuesta es: ", respuesta);
+var PI = require('operaciones-basicas-calculadora/lib/pi');
+console.log("La constante pi es: ", PI);
 //PARTE DEL Trabajo en clase
 var sumaLibreria1 = require('operaciones-basicas-calculadora/lib/suma');
 var R1 = sumaLibreria1(9, 8);

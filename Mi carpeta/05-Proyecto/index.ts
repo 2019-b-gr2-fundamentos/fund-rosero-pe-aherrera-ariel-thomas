@@ -5,6 +5,10 @@ import * as sumaLibreria from 'librerias_ariel/lib/suma';
 const respuesta = sumaLibreria(1,2);
 console.log(`La respuesta es: `,respuesta);
 
+import * as PI from 'operaciones-basicas-calculadora/lib/pi';
+console.log(`La constante pi es: `,PI);
+
+
 //PARTE DEL Trabajo en clase
 import * as sumaLibreria1 from 'operaciones-basicas-calculadora/lib/suma';
 
