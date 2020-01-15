@@ -46,12 +46,12 @@ const poliPerroAmarrillo: AnimalPerrito = {
 
 const duenioPoliPerroAmarrillo: Duenio = {
     nombre: 'Adrian',
-    apellido: '',
+    apellido: 'Eguez',
     fechaNacimiento: 2,
-    cedula: ,
+    cedula: null,
     mascotasPerro: [ poliPerroAmarrillo ]
-
 }
+
 
 //Acceder a los datos de una estructura de datos
 poliPerroAmarrillo.duenio = duenioPoliPerroAmarrillo;
