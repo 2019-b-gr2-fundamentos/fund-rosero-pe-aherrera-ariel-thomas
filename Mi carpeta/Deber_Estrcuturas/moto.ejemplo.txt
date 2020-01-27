@@ -1,0 +1,8 @@
+[
+    {
+        "Modelo": "GSX-R750",
+        "Color": Negro,
+        "Precio": "21391.87",
+        "Fuerza": 750,
+        "Marca": "Suzuki"
+    },
