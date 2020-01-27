@@ -3,13 +3,62 @@ import { escribirArchivo } from "./03-escribir-archivo";
 import { Estudiante } from "./interfaces/estudiante.interface";
 import * as prompts from "prompts";
 
+//Parsear -> coger un texto y tranformarlo en algun tipo de estructura -> Se parcea el contenido del texto
+/*
+{
+    "nombre": "Adrian"
+}
+
+<universidad>
+    <facultad></facultad>
+</universidad>
+
+*/ 
+
 async function main(){
-    let contador = 1;
+    
     const contenidoArchivo = leerArchivo(
         './ejemplo.txt'
     );
     console.log('contenido Archivo:', contenidoArchivo);
-    const arregloCargadoDeArchivo = JSON.parse(contenidoArchivo);
+
+    let arregloCargadoDeArchivo;  //undefine
+    try{ //Las cosas salen bien
+        arregloCargadoDeArchivo = JSON.
+        parse(contenidoArchivo);
+    } catch(error) {
+        arregloCargadoDeArchivo = [];          //Tenemos Undefined
+        console.log('Error parseado archivo');
+    }
+
+    let contador = 1;
+    //Operadores
+    let minimoID = -1;
+    arregloCargadoDeArchivo
+        .forEach(           //No se envi nada y no se les devuelve nada y sirve solo para iterar
+            function(valorActual){
+                const idActual = valorActual.id;
+                if(idActual > minimoID){
+                    minimoID = idActual
+                }
+            }        
+    );
+    minimoID = minimoID + 1;
+    contador = minimoID;
+    /*
+    try{
+        console.log('1');
+        console.log('2');
+        var a = b;
+        //throw new Error("EL ARCHIVO ESTA MAL PARSEADO")
+        console.log('4');
+        console.log('5');
+    } catch(error){
+        console.log(error);
+        console.log(':3')
+    }
+    */
+    
     const arregloEstudiantes: Estudiante[] = arregloCargadoDeArchivo;
     const arregloPreguntas = [
         {
@@ -86,5 +135,17 @@ async function main(){
     escribirArchivo('./ejemplo.txt','');
     console.log(textoLeido + nuevoContenido);
     */
-}
+    const arregloTexto = JSON.stringify(arregloEstudiantes);
+    console.log(arregloTexto);
+
+    escribirArchivo(
+        './ejemplo.txt',
+        arregloTexto
+    );
+
+
+}  
 main().then().catch();
+
+
+

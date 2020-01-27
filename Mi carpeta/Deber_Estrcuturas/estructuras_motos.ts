@@ -1,10 +1,11 @@
 import * as prompts from './node_modules/prompts'
 import {Moto} from './Interfaces/moto.interface'
 
-async function motos(){
+let id = 1;
+let arregloMotos: Moto[] = [];
 
-    const arregloMotos: Moto[]= [];
-    const preguntas = [
+async function crearDatosMotos(){
+    const preguntasMoto = [
         {
             type: 'text',
             name: 'Modelo',
@@ -31,97 +32,135 @@ async function motos(){
             message: 'Ingrese la marca a la que pertencese la moto'
         }
 
-    ] 
-    
-    async function agregarMoto(){
-        let informacionMotos: Moto = await prompts(preguntas)
-        arregloMotos.push(informacionMotos)
-        opciones();
-    }
+    ];
 
-    async function editarMotos(){
-        let indice = await prompts({
-            type: 'number',
-            name: 'indice',
-            message: 'Inserte el indice de la caracteristica de la moto que quiere editar'
-        })
+    const respuestaPreguntas = await prompts(preguntasMoto);
+    const nuevoRegistroMoto = {
+        Aid: id,
+        Modelo: respuestaPreguntas.Modelo,
+        Color: respuestaPreguntas.Color,
+        Precio: respuestaPreguntas.Precio,
+        Fuerza: respuestaPreguntas.Fuerza,
+        Marca: respuestaPreguntas.Marca
+    };
 
-        if (indice.indice < arregloMotos.length){
-            let caracteristicaAeditar = await prompts({
-                type: 'text',
-                name: 'caracteristica',
-                message:'¿Que desea editar?' 
-        })
+    id = id + 1;
+    arregloMotos.push(nuevoRegistroMoto);
+    queDeseaHacer().then().catch();
 
-        if 
-        (caracteristicaAeditar.caracteristica == 'Modelo'
-        || caracteristicaAeditar.caracteristica == 'Color'
-        || caracteristicaAeditar.caracteristica == 'Precio' 
-        || caracteristicaAeditar.caracteristica == 'Fuerza'
-        || caracteristicaAeditar.caracteristica == 'Marca'){
-        let nuevoValor = await prompts({
-            type: 'text',
-            name: 'valor',
-            message: '¿Que desea insertar?'
-         })   
+};
+async function queDeseaHacer(){
+    const preguntas = await prompts({
+        type: 'text',
+        name: 'respuestas',
+        message: '¿Que desea hacer? \n 1-crear otro registro \n 2-leer los registros actuales \n 3-actualizar datos \n 4-eliminar registros \n 5-SALIR'
+    });
+    const respuesta1 = preguntas.respuestas;
+    if(respuesta1 == 1){
+        crearDatosMotos().then().catch();
+        
+    }else if(respuesta1 == 2){
+        leerRegistros().then().catch();
 
-         let MotoElegida = arregloMotos[indice.indice]
-                switch (caracteristicaAeditar.caracteristica){
-                    case 'Modelo':
-                        MotoElegida.Modelo = nuevoValor.valor
-                        break;
-                    case 'Color':
-                        MotoElegida.Color = nuevoValor.valor
-                        break;
-                    case 'Precio':
-                        MotoElegida.Precio = nuevoValor.valor
-                        break;
-                    case 'Fuerza':
-                        MotoElegida.Fuerza = nuevoValor.valor
-                        break; 
-                    case 'Marca':
-                        MotoElegida.Marca = nuevoValor.valor
-                        break;     
+    }else if(respuesta1 == 3){
+        editarRegistro().then().catch();
+
+    }else if(respuesta1 == 4){
+        eliminarRegistro().then().catch();
+
+    }else if(respuesta1 == 5){
+        console.log('ADIOS');
+    }else{
+        console.log('Elija una opcion valida');
+        queDeseaHacer().then().catch();
+    };
+    return preguntas.respuestas;
+};
+async function leerRegistros(){
+    console.log('Registro de Motos:', arregloMotos);
+    queDeseaHacer().then().catch();
+};
+async function editarRegistro(){
+    const AidAEditar = await prompts({
+        type: 'number',
+        name: 'Aid',
+        message: 'Ingrese el Aid de la Moto cuya informacion desea cambiar'
+    });
+    const AidEncontrado = arregloMotos.findIndex(
+        function(valorActual){
+        return valorActual.Aid == AidAEditar.Aid
         }
-        opciones();
-
-        } else {
-            console.log('La caracteristica indicada no existe');
-            editarMotos()
-               } 
-        } else {
-            console.log('El indice ingresado no existe, intente nuevamente');
-            editarMotos()
-               }
-        };
-
-    async function opciones(){
-        let opciones = await prompts({
-            type: 'text',
-            name: 'eleccion',
-            message: 'Insertar nueva moto --> 1 || Editar una moto que ya existe --> 2 || Eliminar --> 3 || Salir -> 4 '
+    );
+    const queDeseaEditar = await prompts({
+        type: 'text',
+        name: 'campoAEditar',
+        message: '¿Que campo desea editar?'
     });
 
-    switch(opciones.eleccion){    
-        case '1':
-            agregarMoto();
-            break;
-        case '2':
-            editarMotos();
-            break;  
-        case '3':
-            console.log(arregloMotos)  
-            break; 
-        case '4':
-            console.log("Gracias por su visita")  
-            break; 
-        default:
-            console.log('La opción0 no es valida, intente de nuevo') 
-            opciones();
-            break;
-    }
-    }
-
-    agregarMoto();  
+    const respuestaCampo = queDeseaEditar.campoAEditar;
+    if(respuestaCampo == 'Modelo'){
+        const nuevoModelo = await prompts({
+            type: 'text',
+            name: 'nuevoModelo',
+            message: 'Ingrese el modelo de la nueva moto'
+        });
+        arregloMotos[AidEncontrado].Modelo = nuevoModelo.nuevoModelo;
+    }else if(respuestaCampo == 'Color'){
+        const nuevoColor = await prompts({
+            type: 'text',
+            name: 'nuevoColor',
+            message: 'Ingrese el color de la nueva Moto'                 
+        });
+        arregloMotos[AidEncontrado].Color = nuevoColor.nuevoColor;
+    }else if(respuestaCampo == 'Precio'){
+        const nuevoPrecio = await prompts({
+            type: 'number',
+            name: 'nuevoPrecio',
+            message: 'Ingrese el nuevo Precio en el mercado'
+        });
+        arregloMotos[AidEncontrado].Precio = nuevoPrecio.nuevoPrecio;
+    }else if(respuestaCampo == 'Fuerza'){
+        const nuevaFuerza = await prompts({
+            type: 'number',
+            name: 'nuevaFuerza',
+            message: 'Ingrese los nuevos caballos de Fuerza que tiene la moto'
+        });
+        arregloMotos[AidEncontrado].Fuerza = nuevaFuerza.nuevaFuerza;
+    }else if(respuestaCampo == 'Marca'){            
+        const nuevaMarca = await prompts({
+            type: 'text',
+            name: 'Marca',
+            message: 'Ingrese la nueva marca de la moto'
+        });
+        arregloMotos[AidEncontrado].Marca = nuevaMarca.Marca;
+    }else{
+        console.log('Ingrese un campo valido');
+    };
+    console.log('El registro de Motos actualizado es:', arregloMotos);
+    queDeseaHacer().then().catch();
+    return arregloMotos
 };
-motos();
+///
+async function eliminarRegistro(){
+    const AidAEliminar = await prompts({
+        type: 'number',
+        name: 'Aid',
+        message: 'Ingrese el Aid de la moto cuya informacion desea eliminar'
+    });
+    const AidEncontrado = arregloMotos.findIndex(
+        function(valorActual){
+        return valorActual.Aid == AidAEliminar.Aid
+        }
+    );
+    arregloMotos.splice(AidEncontrado, 1);
+    console.log('El nuevo registro de la Moto es:', arregloMotos);
+    queDeseaHacer().then().catch();
+    return arregloMotos
+}
+
+function main(){
+    crearDatosMotos().then().catch();
+
+}
+
+main();

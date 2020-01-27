@@ -1,4 +1,5 @@
 export interface Moto{
+    Aid: number,
     Modelo: string,
     Color: string,
     Precio: number,

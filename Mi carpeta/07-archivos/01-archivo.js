@@ -37,17 +37,47 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var _02_leer_archivo_1 = require("./02-leer-archivo");
+var _03_escribir_archivo_1 = require("./03-escribir-archivo");
 var prompts = require("prompts");
+//Parsear -> coger un texto y tranformarlo en algun tipo de estructura -> Se parcea el contenido del texto
+/*
+{
+    "nombre": "Adrian"
+}
+
+<universidad>
+    <facultad></facultad>
+</universidad>
+
+*/
 function main() {
     return __awaiter(this, void 0, void 0, function () {
-        var contador, contenidoArchivo, arregloCargadoDeArchivo, arregloEstudiantes, arregloPreguntas, respuestaEstudianteUno, nuevoRegistroUno, respuestaEstudianteDos, nuevoRegistroDos, idABuscar, indiceEncontrado, nombreAEditar, buscar, estudianteEcontrado;
+        var contenidoArchivo, arregloCargadoDeArchivo, contador, minimoID, arregloEstudiantes, arregloPreguntas, respuestaEstudianteUno, nuevoRegistroUno, respuestaEstudianteDos, nuevoRegistroDos, idABuscar, indiceEncontrado, nombreAEditar, buscar, estudianteEcontrado, arregloTexto;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    contador = 1;
                     contenidoArchivo = _02_leer_archivo_1.leerArchivo('./ejemplo.txt');
                     console.log('contenido Archivo:', contenidoArchivo);
-                    arregloCargadoDeArchivo = JSON.parse(contenidoArchivo);
+                    try { //Las cosas salen bien
+                        arregloCargadoDeArchivo = JSON.
+                            parse(contenidoArchivo);
+                    }
+                    catch (error) {
+                        arregloCargadoDeArchivo = []; //Tenemos Undefined
+                        console.log('Error parseado archivo');
+                    }
+                    contador = 1;
+                    minimoID = -1;
+                    arregloCargadoDeArchivo
+                        .forEach(//No se envi nada y no se les devuelve nada y sirve solo para iterar
+                    function (valorActual) {
+                        var idActual = valorActual.id;
+                        if (idActual > minimoID) {
+                            minimoID = idActual;
+                        }
+                    });
+                    minimoID = minimoID + 1;
+                    contador = minimoID;
                     arregloEstudiantes = arregloCargadoDeArchivo;
                     arregloPreguntas = [
                         {
@@ -114,6 +144,9 @@ function main() {
                         return valorActual.nombre == buscar.nombre;
                     });
                     console.log(estudianteEcontrado);
+                    arregloTexto = JSON.stringify(arregloEstudiantes);
+                    console.log(arregloTexto);
+                    _03_escribir_archivo_1.escribirArchivo('./ejemplo.txt', arregloTexto);
                     return [2 /*return*/];
             }
         });
