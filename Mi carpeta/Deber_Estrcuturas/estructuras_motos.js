@@ -37,159 +37,225 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var prompts = require("./node_modules/prompts");
-function motos() {
+var id = 1;
+var arregloMotos = [];
+function crearDatosMotos() {
     return __awaiter(this, void 0, void 0, function () {
-        function agregarMoto() {
-            return __awaiter(this, void 0, void 0, function () {
-                var informacionMotos;
-                return __generator(this, function (_a) {
-                    switch (_a.label) {
-                        case 0: return [4 /*yield*/, prompts(preguntas)];
-                        case 1:
-                            informacionMotos = _a.sent();
-                            arregloMotos.push(informacionMotos);
-                            opciones();
-                            return [2 /*return*/];
-                    }
-                });
-            });
-        }
-        function editarMotos() {
-            return __awaiter(this, void 0, void 0, function () {
-                var indice, caracteristicaAeditar, nuevoValor, MotoElegida;
-                return __generator(this, function (_a) {
-                    switch (_a.label) {
-                        case 0: return [4 /*yield*/, prompts({
-                                type: 'number',
-                                name: 'indice',
-                                message: 'Inserte el indice de la caracteristica de la moto que quiere editar'
-                            })];
-                        case 1:
-                            indice = _a.sent();
-                            if (!(indice.indice < arregloMotos.length)) return [3 /*break*/, 6];
-                            return [4 /*yield*/, prompts({
-                                    type: 'text',
-                                    name: 'caracteristica',
-                                    message: '¿Que desea editar?'
-                                })];
-                        case 2:
-                            caracteristicaAeditar = _a.sent();
-                            if (!(caracteristicaAeditar.caracteristica == 'Modelo'
-                                || caracteristicaAeditar.caracteristica == 'Color'
-                                || caracteristicaAeditar.caracteristica == 'Precio'
-                                || caracteristicaAeditar.caracteristica == 'Fuerza'
-                                || caracteristicaAeditar.caracteristica == 'Marca')) return [3 /*break*/, 4];
-                            return [4 /*yield*/, prompts({
-                                    type: 'text',
-                                    name: 'valor',
-                                    message: '¿Que desea insertar?'
-                                })];
-                        case 3:
-                            nuevoValor = _a.sent();
-                            MotoElegida = arregloMotos[indice.indice];
-                            switch (caracteristicaAeditar.caracteristica) {
-                                case 'Modelo':
-                                    MotoElegida.Modelo = nuevoValor.valor;
-                                    break;
-                                case 'Color':
-                                    MotoElegida.Color = nuevoValor.valor;
-                                    break;
-                                case 'Precio':
-                                    MotoElegida.Precio = nuevoValor.valor;
-                                    break;
-                                case 'Fuerza':
-                                    MotoElegida.Fuerza = nuevoValor.valor;
-                                    break;
-                                case 'Marca':
-                                    MotoElegida.Marca = nuevoValor.valor;
-                                    break;
-                            }
-                            opciones();
-                            return [3 /*break*/, 5];
-                        case 4:
-                            console.log('La caracteristica indicada no existe');
-                            editarMotos();
-                            _a.label = 5;
-                        case 5: return [3 /*break*/, 7];
-                        case 6:
-                            console.log('El indice ingresado no existe, intente nuevamente');
-                            editarMotos();
-                            _a.label = 7;
-                        case 7: return [2 /*return*/];
-                    }
-                });
-            });
-        }
-        function opciones() {
-            return __awaiter(this, void 0, void 0, function () {
-                var opciones;
-                return __generator(this, function (_a) {
-                    switch (_a.label) {
-                        case 0: return [4 /*yield*/, prompts({
-                                type: 'text',
-                                name: 'eleccion',
-                                message: 'Insertar nueva moto --> 1 || Editar una moto que ya existe --> 2 || Eliminar --> 3 || Salir -> 4 '
-                            })];
-                        case 1:
-                            opciones = _a.sent();
-                            switch (opciones.eleccion) {
-                                case '1':
-                                    agregarMoto();
-                                    break;
-                                case '2':
-                                    editarMotos();
-                                    break;
-                                case '3':
-                                    console.log(arregloMotos);
-                                    break;
-                                case '4':
-                                    console.log("Gracias por su visita");
-                                    break;
-                                default:
-                                    console.log('La opción0 no es valida, intente de nuevo');
-                                    opciones();
-                                    break;
-                            }
-                            return [2 /*return*/];
-                    }
-                });
-            });
-        }
-        var arregloMotos, preguntas;
+        var preguntasMoto, respuestaPreguntas, nuevoRegistroMoto;
         return __generator(this, function (_a) {
-            arregloMotos = [];
-            preguntas = [
-                {
-                    type: 'text',
-                    name: 'Modelo',
-                    message: 'Ingrese el modelo de la moto'
-                },
-                {
-                    type: 'text',
-                    name: 'Color',
-                    message: 'Ingrese el color de la moto'
-                },
-                {
-                    type: 'number',
-                    name: 'Precio',
-                    message: 'Ingrese el precio de la moto'
-                },
-                {
-                    type: 'number',
-                    name: 'Fuerza',
-                    message: 'Ingrese los Caballos de Fuerza (cc) que posee la moto'
-                },
-                {
-                    type: 'text',
-                    name: 'Marca',
-                    message: 'Ingrese la marca a la que pertencese la moto'
-                }
-            ];
-            ;
-            agregarMoto();
+            switch (_a.label) {
+                case 0:
+                    preguntasMoto = [
+                        {
+                            type: 'text',
+                            name: 'Modelo',
+                            message: 'Ingrese el modelo de la moto'
+                        },
+                        {
+                            type: 'text',
+                            name: 'Color',
+                            message: 'Ingrese el color de la moto'
+                        },
+                        {
+                            type: 'number',
+                            name: 'Precio',
+                            message: 'Ingrese el precio de la moto'
+                        },
+                        {
+                            type: 'number',
+                            name: 'Fuerza',
+                            message: 'Ingrese los Caballos de Fuerza (cc) que posee la moto'
+                        },
+                        {
+                            type: 'text',
+                            name: 'Marca',
+                            message: 'Ingrese la marca a la que pertencese la moto'
+                        }
+                    ];
+                    return [4 /*yield*/, prompts(preguntasMoto)];
+                case 1:
+                    respuestaPreguntas = _a.sent();
+                    nuevoRegistroMoto = {
+                        Aid: id,
+                        Modelo: respuestaPreguntas.Modelo,
+                        Color: respuestaPreguntas.Color,
+                        Precio: respuestaPreguntas.Precio,
+                        Fuerza: respuestaPreguntas.Fuerza,
+                        Marca: respuestaPreguntas.Marca
+                    };
+                    id = id + 1;
+                    arregloMotos.push(nuevoRegistroMoto);
+                    queDeseaHacer().then().catch();
+                    return [2 /*return*/];
+            }
+        });
+    });
+}
+;
+function queDeseaHacer() {
+    return __awaiter(this, void 0, void 0, function () {
+        var preguntas, respuesta1;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, prompts({
+                        type: 'text',
+                        name: 'respuestas',
+                        message: 'Seleccione la opción que desea realizar \n 1-Crear otro registro \n 2-Leer los registros actuales \n 3-Actualizar datos \n 4-Eliminar registros \n 5-SALIR'
+                    })];
+                case 1:
+                    preguntas = _a.sent();
+                    respuesta1 = preguntas.respuestas;
+                    if (respuesta1 == 1) {
+                        crearDatosMotos().then().catch();
+                    }
+                    else if (respuesta1 == 2) {
+                        leerRegistros().then().catch();
+                    }
+                    else if (respuesta1 == 3) {
+                        editarRegistro().then().catch();
+                    }
+                    else if (respuesta1 == 4) {
+                        eliminarRegistro().then().catch();
+                    }
+                    else if (respuesta1 == 5) {
+                        console.log('Adios vuelve pronto');
+                    }
+                    else {
+                        console.log('Elija una opcion valida');
+                        queDeseaHacer().then().catch();
+                    }
+                    ;
+                    return [2 /*return*/, preguntas.respuestas];
+            }
+        });
+    });
+}
+;
+function leerRegistros() {
+    return __awaiter(this, void 0, void 0, function () {
+        return __generator(this, function (_a) {
+            console.log('Registro de Motos:', arregloMotos);
+            queDeseaHacer().then().catch();
             return [2 /*return*/];
         });
     });
 }
 ;
-motos();
+function editarRegistro() {
+    return __awaiter(this, void 0, void 0, function () {
+        var AidAEditar, AidEncontrado, queDeseaEditar, respuestaCampo, nuevoModelo, nuevoColor, nuevoPrecio, nuevaFuerza, nuevaMarca;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, prompts({
+                        type: 'number',
+                        name: 'Aid',
+                        message: 'Ingrese el Aid de la Moto cuya informacion desea cambiar'
+                    })];
+                case 1:
+                    AidAEditar = _a.sent();
+                    AidEncontrado = arregloMotos.findIndex(function (valorActual) {
+                        return valorActual.Aid == AidAEditar.Aid;
+                    });
+                    return [4 /*yield*/, prompts({
+                            type: 'text',
+                            name: 'campoAEditar',
+                            message: '¿Que campo desea cambiar?'
+                        })];
+                case 2:
+                    queDeseaEditar = _a.sent();
+                    respuestaCampo = queDeseaEditar.campoAEditar;
+                    if (!(respuestaCampo == 'Modelo')) return [3 /*break*/, 4];
+                    return [4 /*yield*/, prompts({
+                            type: 'text',
+                            name: 'nuevoModelo',
+                            message: 'Ingrese el modelo de la nueva moto'
+                        })];
+                case 3:
+                    nuevoModelo = _a.sent();
+                    arregloMotos[AidEncontrado].Modelo = nuevoModelo.nuevoModelo;
+                    return [3 /*break*/, 13];
+                case 4:
+                    if (!(respuestaCampo == 'Color')) return [3 /*break*/, 6];
+                    return [4 /*yield*/, prompts({
+                            type: 'text',
+                            name: 'nuevoColor',
+                            message: 'Ingrese el color de la nueva Moto'
+                        })];
+                case 5:
+                    nuevoColor = _a.sent();
+                    arregloMotos[AidEncontrado].Color = nuevoColor.nuevoColor;
+                    return [3 /*break*/, 13];
+                case 6:
+                    if (!(respuestaCampo == 'Precio')) return [3 /*break*/, 8];
+                    return [4 /*yield*/, prompts({
+                            type: 'number',
+                            name: 'nuevoPrecio',
+                            message: 'Ingrese el nuevo Precio en el mercado'
+                        })];
+                case 7:
+                    nuevoPrecio = _a.sent();
+                    arregloMotos[AidEncontrado].Precio = nuevoPrecio.nuevoPrecio;
+                    return [3 /*break*/, 13];
+                case 8:
+                    if (!(respuestaCampo == 'Fuerza')) return [3 /*break*/, 10];
+                    return [4 /*yield*/, prompts({
+                            type: 'number',
+                            name: 'nuevaFuerza',
+                            message: 'Ingrese los nuevos caballos de Fuerza que tiene la moto'
+                        })];
+                case 9:
+                    nuevaFuerza = _a.sent();
+                    arregloMotos[AidEncontrado].Fuerza = nuevaFuerza.nuevaFuerza;
+                    return [3 /*break*/, 13];
+                case 10:
+                    if (!(respuestaCampo == 'Marca')) return [3 /*break*/, 12];
+                    return [4 /*yield*/, prompts({
+                            type: 'text',
+                            name: 'Marca',
+                            message: 'Ingrese la nueva marca de la moto'
+                        })];
+                case 11:
+                    nuevaMarca = _a.sent();
+                    arregloMotos[AidEncontrado].Marca = nuevaMarca.Marca;
+                    return [3 /*break*/, 13];
+                case 12:
+                    console.log('Ingrese un campo valido');
+                    _a.label = 13;
+                case 13:
+                    ;
+                    console.log('El registro de Motos actualizado es:', arregloMotos);
+                    queDeseaHacer().then().catch();
+                    return [2 /*return*/, arregloMotos];
+            }
+        });
+    });
+}
+;
+///
+function eliminarRegistro() {
+    return __awaiter(this, void 0, void 0, function () {
+        var AidAEliminar, AidEncontrado;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, prompts({
+                        type: 'number',
+                        name: 'Aid',
+                        message: 'Ingrese el Aid de la moto cuya informacion desea eliminar'
+                    })];
+                case 1:
+                    AidAEliminar = _a.sent();
+                    AidEncontrado = arregloMotos.findIndex(function (valorActual) {
+                        return valorActual.Aid == AidAEliminar.Aid;
+                    });
+                    arregloMotos.splice(AidEncontrado, 1);
+                    console.log('El nuevo registro de la Moto es:', arregloMotos);
+                    queDeseaHacer().then().catch();
+                    return [2 /*return*/, arregloMotos];
+            }
+        });
+    });
+}
+function main() {
+    crearDatosMotos().then().catch();
+}
+main();

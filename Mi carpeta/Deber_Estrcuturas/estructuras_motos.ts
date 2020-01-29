@@ -53,7 +53,7 @@ async function queDeseaHacer(){
     const preguntas = await prompts({
         type: 'text',
         name: 'respuestas',
-        message: '¿Que desea hacer? \n 1-crear otro registro \n 2-leer los registros actuales \n 3-actualizar datos \n 4-eliminar registros \n 5-SALIR'
+        message: 'Seleccione la opción que desea realizar \n 1-Crear otro registro \n 2-Leer los registros actuales \n 3-Actualizar datos \n 4-Eliminar registros \n 5-SALIR'
     });
     const respuesta1 = preguntas.respuestas;
     if(respuesta1 == 1){
@@ -69,7 +69,7 @@ async function queDeseaHacer(){
         eliminarRegistro().then().catch();
 
     }else if(respuesta1 == 5){
-        console.log('ADIOS');
+        console.log('Adios vuelve pronto');
     }else{
         console.log('Elija una opcion valida');
         queDeseaHacer().then().catch();
@@ -94,7 +94,7 @@ async function editarRegistro(){
     const queDeseaEditar = await prompts({
         type: 'text',
         name: 'campoAEditar',
-        message: '¿Que campo desea editar?'
+        message: '¿Que campo desea cambiar?'
     });
 
     const respuestaCampo = queDeseaEditar.campoAEditar;
