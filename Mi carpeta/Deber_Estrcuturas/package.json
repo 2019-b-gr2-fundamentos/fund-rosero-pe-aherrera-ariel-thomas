@@ -1,0 +1,14 @@
+{
+  "name": "deber_estrcuturas",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "moto": "(tsc estructuras_motos.ts --target ES5 || echo) && node estructuras_motos.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "prompts": "^2.3.0"
+  }
+}
