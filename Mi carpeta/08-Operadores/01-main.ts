@@ -1,3 +1,7 @@
+import { filter } from "./02-filter";
+import { Some } from "./05-Some";
+import { forEach } from "./04-forEach";
+
 function main(){
     const arregloEstudiantes: any = [
         {id:1, nombre: "Adrian", nota: 7}, 
@@ -100,5 +104,36 @@ function main(){
     console.log('RespuestaReduce',respuestaReduce);
     console.log('Promedio', respuestaReduce / arregloEstudiantes.length);
     console.log('arregloEstudiantes',arregloEstudiantes);
+
+    const respuestaFilterNuestro = filter(arregloEstudiantes,
+        function(valorActual,i,arr){
+            console.log('Valor:', valorActual);
+            console.log('Indice: ', i);
+            console.log('Arreglo: ',arr);
+            return valorActual.nota >= 7;
+        }
+        );
+    console.log('RespuestaFilterNuestro', respuestaFilterNuestro);
+    console.log('arregloEstudiantes',arregloEstudiantes);
+
+    const respuestaSomeNuestro = Some(arregloEstudiantes,
+        function(valorActual,i,arr){
+            console.log('Valor:', valorActual);
+            console.log('Indice: ', i);
+            console.log('Arreglo: ',arr);
+            return valorActual.nota > 9 ;
+        }  )
+    console.log('RespuestaSomeNuestro', respuestaSomeNuestro);
+    console.log('arregloEstudiantes',arregloEstudiantes);
+
+    const respuestaForEachNuestro = forEach(arregloEstudiantes,
+        function(valorActual,i,arr){
+            console.log(valorActual.nota);
+        }  )
+    console.log('RespuestaForEachNuestro', respuestaForEachNuestro);
+    console.log('arregloEstudiantes',arregloEstudiantes);
+
+
 }
 main();
+
