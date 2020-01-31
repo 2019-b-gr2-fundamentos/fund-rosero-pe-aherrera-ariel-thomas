@@ -1,6 +1,7 @@
 import { filter } from "./02-filter";
 import { Some } from "./05-Some";
 import { forEach } from "./04-forEach";
+import { Every } from "./05-Every";
 
 function main(){
     const arregloEstudiantes: any = [
@@ -116,14 +117,12 @@ function main(){
     console.log('RespuestaFilterNuestro', respuestaFilterNuestro);
     console.log('arregloEstudiantes',arregloEstudiantes);
 
-    const respuestaSomeNuestro = Some(arregloEstudiantes,
+    const respuestaEveryNuestro = Every(arregloEstudiantes,
         function(valorActual,i,arr){
-            console.log('Valor:', valorActual);
-            console.log('Indice: ', i);
-            console.log('Arreglo: ',arr);
-            return valorActual.nota > 9 ;
-        }  )
-    console.log('RespuestaSomeNuestro', respuestaSomeNuestro);
+            return valorActual.nota >= 3 ;
+        }  );
+
+    console.log('RespuestaEveryNuestro', respuestaEveryNuestro);
     console.log('arregloEstudiantes',arregloEstudiantes);
 
     const respuestaForEachNuestro = forEach(arregloEstudiantes,
@@ -133,7 +132,14 @@ function main(){
     console.log('RespuestaForEachNuestro', respuestaForEachNuestro);
     console.log('arregloEstudiantes',arregloEstudiantes);
 
+    const respuestaSomeNuestro = Some(arregloEstudiantes,
+        function(valorActual,i,arr){
+            return valorActual.nota <= 4 ;          
+        });
 
+    console.log('RespuestaSomeNuestro', respuestaSomeNuestro);
+    console.log('arregloEstudiantes',arregloEstudiantes);
+    
 }
 main();
 

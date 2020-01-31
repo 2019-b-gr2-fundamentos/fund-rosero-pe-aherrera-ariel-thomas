@@ -36,3 +36,115 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+var _02_leer_archivo_1 = require("./02-leer-archivo");
+var _03_escribir_archivo_1 = require("./03-escribir-archivo");
+//import * as prompts from "C:/Users/USREPS/Documents/GitHub/fund-p-rez-nieto-cristopher-santiago/mi carpeta/06-estructuras-de-datos/node_modules/prompts";
+//import * as prompts from "C:/Users/sampe_000/Documents/GitHub/fund-p-rez-nieto-cristopher-santiago/mi carpeta/06-estructuras-de-datos/node_modules/prompts";
+var prompts = require("prompts");
+function main() {
+    return __awaiter(this, void 0, void 0, function () {
+        var contenidoArchivo, arregloCargadoDeArchivo, contador, minimoId, arregloEstudiantes, arregloPreguntas, respuestaEstudianteUno, nuevoRegistroUno, respuestaEstudianteDos, nuevoRegistroDos, idABuscar, indiceEncontrado, nombreAEditar, buscar, estudianteEncontrado, arregloTexto;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    contenidoArchivo = _02_leer_archivo_1.leerArchivo('./ejemplo.txt');
+                    console.log('contenidoArchivo', contenidoArchivo);
+                    try {
+                        arregloCargadoDeArchivo = JSON
+                            .parse(contenidoArchivo);
+                    }
+                    catch (error) {
+                        arregloCargadoDeArchivo = [
+                            { "id": 1, "nombre": "Juanito" },
+                            { "id": 2, "nombre": "Pepito" }
+                        ];
+                        console.error('Error parseando archivo');
+                    }
+                    contador = 3;
+                    minimoId = -1;
+                    arregloCargadoDeArchivo
+                        .forEach(// NO ENVIA NADA y NO DEVUELVE NADA
+                    // ITERAR
+                    function (valorActual) {
+                        var idActual = valorActual.id;
+                        if (idActual > minimoId) {
+                            minimoId = idActual;
+                        }
+                    });
+                    minimoId = minimoId + 1;
+                    contador = minimoId;
+                    arregloEstudiantes = arregloCargadoDeArchivo;
+                    arregloPreguntas = [
+                        {
+                            type: 'text',
+                            name: 'nombre',
+                            message: 'Ingresa tu nombre'
+                        }
+                    ];
+                    return [4 /*yield*/, prompts(arregloPreguntas)];
+                case 1:
+                    respuestaEstudianteUno = _a.sent();
+                    nuevoRegistroUno = {
+                        id: contador,
+                        nombre: respuestaEstudianteUno.nombre
+                    };
+                    contador = contador + 1;
+                    arregloEstudiantes.push(nuevoRegistroUno);
+                    return [4 /*yield*/, prompts(arregloPreguntas)];
+                case 2:
+                    respuestaEstudianteDos = _a.sent();
+                    nuevoRegistroDos = {
+                        id: contador,
+                        nombre: respuestaEstudianteDos.nombre
+                    };
+                    contador = contador + 1;
+                    arregloEstudiantes.push(nuevoRegistroDos);
+                    console.log('Cual usuario quieres Editar?');
+                    console.log(arregloEstudiantes);
+                    return [4 /*yield*/, prompts({
+                            type: 'number',
+                            name: 'id',
+                            message: 'Ingresa el ID del registro a Editar'
+                        })];
+                case 3:
+                    idABuscar = _a.sent();
+                    indiceEncontrado = arregloEstudiantes.findIndex(// return CONDICION ->
+                    function (valorActual, indice, arreglo) {
+                        return valorActual.id == idABuscar.id; // Nos devuelve el INDICE
+                    } // Si encuentra nos devuelve el indice
+                    // No encuentra
+                    );
+                    console.log('Indice encontrado:', indiceEncontrado);
+                    return [4 /*yield*/, prompts({
+                            type: 'text',
+                            name: 'nombre',
+                            message: 'Ingresa el nuevo nombre'
+                        })];
+                case 4:
+                    nombreAEditar = _a.sent();
+                    arregloEstudiantes[indiceEncontrado].nombre = nombreAEditar.nombre;
+                    console.log(arregloEstudiantes);
+                    return [4 /*yield*/, prompts({
+                            type: 'text',
+                            name: 'nombre',
+                            message: 'Buscar por ID o por NOMBRE'
+                        })];
+                case 5:
+                    buscar = _a.sent();
+                    estudianteEncontrado = arregloEstudiantes
+                        .find(// return CONDICION
+                    function (valorActual) {
+                        return valorActual.nombre == buscar.nombre;
+                    });
+                    console.log(estudianteEncontrado);
+                    arregloTexto = JSON.stringify(arregloEstudiantes);
+                    // JSON.stringify -> Convierte objeto o arreglo en memoria
+                    //                -> a texto
+                    console.log(arregloTexto);
+                    _03_escribir_archivo_1.escribirArchivo('./ejemplo.txt', arregloTexto);
+                    return [2 /*return*/];
+            }
+        });
+    });
+}
+main().then().catch();

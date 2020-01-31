@@ -1,0 +1,14 @@
+{
+  "name": "deber_archivos",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "Ran": "(tsc archivos_motos.ts --target ES5 || echo) && node archivos_motos.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "prompts": "^2.3.0"
+  }
+}

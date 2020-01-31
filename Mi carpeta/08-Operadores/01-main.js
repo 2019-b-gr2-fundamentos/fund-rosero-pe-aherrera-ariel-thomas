@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var _02_filter_1 = require("./02-filter");
 var _05_Some_1 = require("./05-Some");
 var _04_forEach_1 = require("./04-forEach");
+var _05_Every_1 = require("./05-Every");
 function main() {
     var arregloEstudiantes = [
         { id: 1, nombre: "Adrian", nota: 7 },
@@ -89,18 +90,20 @@ function main() {
     });
     console.log('RespuestaFilterNuestro', respuestaFilterNuestro);
     console.log('arregloEstudiantes', arregloEstudiantes);
-    var respuestaSomeNuestro = _05_Some_1.Some(arregloEstudiantes, function (valorActual, i, arr) {
-        console.log('Valor:', valorActual);
-        console.log('Indice: ', i);
-        console.log('Arreglo: ', arr);
-        return valorActual.nota > 9;
+    var respuestaEveryNuestro = _05_Every_1.Every(arregloEstudiantes, function (valorActual, i, arr) {
+        return valorActual.nota >= 3;
     });
-    console.log('RespuestaSomeNuestro', respuestaSomeNuestro);
+    console.log('RespuestaEveryNuestro', respuestaEveryNuestro);
     console.log('arregloEstudiantes', arregloEstudiantes);
     var respuestaForEachNuestro = _04_forEach_1.forEach(arregloEstudiantes, function (valorActual, i, arr) {
         console.log(valorActual.nota);
     });
     console.log('RespuestaForEachNuestro', respuestaForEachNuestro);
+    console.log('arregloEstudiantes', arregloEstudiantes);
+    var respuestaSomeNuestro = _05_Some_1.Some(arregloEstudiantes, function (valorActual, i, arr) {
+        return valorActual.nota <= 4;
+    });
+    console.log('RespuestaSomeNuestro', respuestaSomeNuestro);
     console.log('arregloEstudiantes', arregloEstudiantes);
 }
 main();

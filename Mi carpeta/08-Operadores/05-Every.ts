@@ -1,4 +1,4 @@
-export function Some(
+export function Every(
     arreglo: any[],
     funcion: (
         valorActual: any,
@@ -8,6 +8,17 @@ export function Some(
     let  condicion = true;
     for( let i = 0; i < arreglo.length; i++) {
         const respuestaFuncion = funcion(
-            
-        )
+            arreglo[i],
+            i,
+            arreglo,
+        );
+        if(respuestaFuncion != true){
+            condicion = false;
+            return condicion;
+        } else {
+            return condicion;
+        } 
+};
+};
+
 
