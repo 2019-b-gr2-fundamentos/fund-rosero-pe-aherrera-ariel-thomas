@@ -1,9 +1,2 @@
-[
-    {
-        "Modelo": "GSX-R750",
-        "Color": Negro,
-        "Precio": "21391.87",
-        "Fuerza": 750,
-        "Marca": "Suzuki"
-    },
-]
+[{"id": 1, "Modelo": "GSX-R750","Color": "Negro","Precio": 21391.87,"Fuerza": 750,"Marca": "Suzuki"}]
+

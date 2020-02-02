@@ -36,113 +36,246 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+var escribir_archivo_1 = require("./escribir-archivo");
 var leer_archivo_1 = require("./leer-archivo");
-function main() {
+var prompts = require("prompts");
+var id = 0;
+var contenidoArchivo = leer_archivo_1.leerArchivo('./moto.ejemplo.txt');
+var arregloMotosCargadoDeArchivo = JSON.parse(contenidoArchivo);
+var minimoid = 0;
+arregloMotosCargadoDeArchivo
+    .forEach(function (valorActual) {
+    var idActual = valorActual.id;
+    if (idActual > minimoid) {
+        minimoid = idActual;
+    }
+});
+minimoid = minimoid + 1;
+id = minimoid;
+var Motos = arregloMotosCargadoDeArchivo;
+function escribirDatosMotos() {
     return __awaiter(this, void 0, void 0, function () {
-        var contenidoArchivo;
+        var preguntasMotos, respuestaPreguntas, nuevoRegistroMoto, arregloParseado;
         return __generator(this, function (_a) {
-            contenidoArchivo = leer_archivo_1.leerArchivo('./moto.ejemplo.txt');
-            console.log('contenidoArchivo', contenidoArchivo);
-            /*
-            let arregloCargadoDeArchivo;
-            try{
-                arregloCargadoDeArchivo = JSON
-                        .parse(contenidoArchivo);
-            } catch(error){
-                arregloCargadoDeArchivo = [
-                    {"id":1,"nombre":"Juanito"},
-                    {"id":2,"nombre":"Pepito"}
-                ];
-                console.error('Error parseando archivo');
+            switch (_a.label) {
+                case 0:
+                    preguntasMotos = [
+                        {
+                            type: 'text',
+                            name: 'Modelo',
+                            message: 'Ingrese el modelo de la moto'
+                        },
+                        {
+                            type: 'text',
+                            name: 'Color',
+                            message: 'Ingrese el color de la moto'
+                        },
+                        {
+                            type: 'number',
+                            name: 'Precio',
+                            message: 'Ingrese el precio de la moto'
+                        },
+                        {
+                            type: 'number',
+                            name: 'Fuerza',
+                            message: 'Ingrese los Caballos de Fuerza (cc) que posee la moto'
+                        },
+                        {
+                            type: 'text',
+                            name: 'Marca',
+                            message: 'Ingrese la marca a la que pertencese la moto'
+                        }
+                    ];
+                    return [4 /*yield*/, prompts(preguntasMotos)];
+                case 1:
+                    respuestaPreguntas = _a.sent();
+                    nuevoRegistroMoto = {
+                        id: id,
+                        Modelo: respuestaPreguntas.Modelo,
+                        Color: respuestaPreguntas.Color,
+                        Precio: respuestaPreguntas.Precio,
+                        Fuerza: respuestaPreguntas.Fuerza,
+                        Marca: respuestaPreguntas.Marca
+                    };
+                    id = id + 1;
+                    Motos.push(nuevoRegistroMoto);
+                    arregloParseado = JSON.stringify(Motos);
+                    escribir_archivo_1.escribirArchivo('./moto.ejemplo.txt', arregloParseado);
+                    queDeseaHacer().then().catch();
+                    return [2 /*return*/];
             }
-        
-            let contador = 3;
-        
-            let minimoId = -1;
-            arregloCargadoDeArchivo
-                .forEach(
-                    function(valorActual){
-                        const idActual = valorActual.id;
-                        if(idActual > minimoId){
-                            minimoId = idActual
-                        }
+        });
+    });
+}
+;
+function queDeseaHacer() {
+    return __awaiter(this, void 0, void 0, function () {
+        var preguntas, respuesta1;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, prompts({
+                        type: 'text',
+                        name: 'respuestas',
+                        message: '¿Que desea hacer? \n 1-Crear otro registro \n 2-Leer los registros actuales \n 3-Actualizar datos \n 4-Eliminar registros \n 5-SALIR'
+                    })];
+                case 1:
+                    preguntas = _a.sent();
+                    respuesta1 = preguntas.respuestas;
+                    if (respuesta1 == 1) {
+                        escribirDatosMotos().then().catch();
                     }
-                );
-            minimoId = minimoId + 1;
-            contador = minimoId;
-          
-           
-            const arregloEstudiantes: Estudiante[] = arregloCargadoDeArchivo;
-            const arregloPreguntas = [
-                {
-                    type: 'text',
-                    name: 'nombre',
-                    message: 'Ingresa tu nombre'
-                }
-            ];
-            const respuestaEstudianteUno = await prompts(arregloPreguntas);
-            
-            const nuevoRegistroUno = {
-                id: contador,
-                nombre: respuestaEstudianteUno.nombre
-            };
-            contador = contador + 1;
-            arregloEstudiantes.push(nuevoRegistroUno);
-        
-            const respuestaEstudianteDos = await prompts(arregloPreguntas);
-            
-            const nuevoRegistroDos = {
-                id: contador,
-                nombre: respuestaEstudianteDos.nombre
-            };
-            contador = contador + 1;
-            arregloEstudiantes.push(nuevoRegistroDos);
-            
-            console.log('Cual usuario quieres Editar?');
-            console.log(arregloEstudiantes);
-        
-            const idABuscar = await prompts({
-                    type: 'number',
-                    name: 'id',
-                    message: 'Ingresa el ID del registro a Editar'
-            })
-            const indiceEncontrado = arregloEstudiantes.findIndex(
-                function (valorActual, indice, arreglo){
-                    return valorActual.id == idABuscar.id;
-                }
-            )
-            console.log('Indice encontrado:', indiceEncontrado);
-            const nombreAEditar = await prompts({
-                type: 'text',
-                name: 'nombre',
-                message: 'Ingresa el nuevo nombre'
-            })
-            arregloEstudiantes[indiceEncontrado].nombre = nombreAEditar.nombre;
-            console.log(arregloEstudiantes);
-        
-            const buscar = await prompts({
-                type: 'text',
-                name: 'nombre',
-                message: 'Buscar por ID o por NOMBRE'
-            });
-            const estudianteEncontrado = arregloEstudiantes
-                    .find(
-                        function(valorActual){
-                            return valorActual.nombre == buscar.nombre;
-                        }
-                    );
-            console.log(estudianteEncontrado);
-        
-            const arregloTexto = JSON.stringify(arregloEstudiantes);
-            console.log(arregloTexto);
-            escribirArchivo(
-                './ejemplo.txt',
-                arregloTexto
-                )
-        }
-        */
-            main().then().catch();
+                    else if (respuesta1 == 2) {
+                        leerRegistros().then().catch();
+                    }
+                    else if (respuesta1 == 3) {
+                        editarRegistro().then().catch();
+                    }
+                    else if (respuesta1 == 4) {
+                        eliminarRegistro().then().catch();
+                    }
+                    else if (respuesta1 == 5) {
+                        console.log('Adios nos vemos pronto');
+                    }
+                    else {
+                        console.log('!Elija una opcion valida¡');
+                        queDeseaHacer().then().catch();
+                    }
+                    ;
+                    return [2 /*return*/, preguntas.respuestas];
+            }
+        });
+    });
+}
+;
+function leerRegistros() {
+    return __awaiter(this, void 0, void 0, function () {
+        return __generator(this, function (_a) {
+            console.log('El archivo cuenta con el siguiente registro: \n', Motos);
+            queDeseaHacer().then().catch();
             return [2 /*return*/];
         });
     });
 }
+;
+function editarRegistro() {
+    return __awaiter(this, void 0, void 0, function () {
+        var idAEditar, idEncontrado, queDeseaEditar, respuestaCampo, nuevoModelo, nuevoColor, nuevoPrecio, nuevaFuerza, nuevaMarca, nuevoRegistroStringificado;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, prompts({
+                        type: 'number',
+                        name: 'id',
+                        message: 'Ingrese el id de la Moto para editar su información'
+                    })];
+                case 1:
+                    idAEditar = _a.sent();
+                    idEncontrado = Motos.findIndex(function (valorActual) {
+                        return valorActual.id == idAEditar.id;
+                    });
+                    return [4 /*yield*/, prompts({
+                            type: 'text',
+                            name: 'campoAEditar',
+                            message: '¿Que campo desea editar?'
+                        })];
+                case 2:
+                    queDeseaEditar = _a.sent();
+                    respuestaCampo = queDeseaEditar.campoAEditar;
+                    if (!(respuestaCampo == 'Modelo')) return [3 /*break*/, 4];
+                    return [4 /*yield*/, prompts({
+                            type: 'text',
+                            name: 'nuevoModelo',
+                            message: 'Ingrese el modelo de la nueva moto'
+                        })];
+                case 3:
+                    nuevoModelo = _a.sent();
+                    Motos[idEncontrado].Modelo = nuevoModelo.nuevoModelo;
+                    return [3 /*break*/, 13];
+                case 4:
+                    if (!(respuestaCampo == 'Color')) return [3 /*break*/, 6];
+                    return [4 /*yield*/, prompts({
+                            type: 'text',
+                            name: 'nuevoColor',
+                            message: 'Ingrese el color de la nueva Moto'
+                        })];
+                case 5:
+                    nuevoColor = _a.sent();
+                    Motos[idEncontrado].Color = nuevoColor.nuevoColor;
+                    return [3 /*break*/, 13];
+                case 6:
+                    if (!(respuestaCampo == 'Precio')) return [3 /*break*/, 8];
+                    return [4 /*yield*/, prompts({
+                            type: 'number',
+                            name: 'nuevoPrecio',
+                            message: 'Ingrese el nuevo Precio en el mercado'
+                        })];
+                case 7:
+                    nuevoPrecio = _a.sent();
+                    Motos[idEncontrado].Precio = nuevoPrecio.nuevoPrecio;
+                    return [3 /*break*/, 13];
+                case 8:
+                    if (!(respuestaCampo == 'Fuerza')) return [3 /*break*/, 10];
+                    return [4 /*yield*/, prompts({
+                            type: 'number',
+                            name: 'nuevaFuerza',
+                            message: 'Ingrese los nuevos caballos de Fuerza que tiene la moto'
+                        })];
+                case 9:
+                    nuevaFuerza = _a.sent();
+                    Motos[idEncontrado].Fuerza = nuevaFuerza.nuevaFuerza;
+                    return [3 /*break*/, 13];
+                case 10:
+                    if (!(respuestaCampo == 'Marca')) return [3 /*break*/, 12];
+                    return [4 /*yield*/, prompts({
+                            type: 'text',
+                            name: 'Marca',
+                            message: 'Ingrese la nueva marca de la moto'
+                        })];
+                case 11:
+                    nuevaMarca = _a.sent();
+                    Motos[idEncontrado].Marca = nuevaMarca.Marca;
+                    return [3 /*break*/, 13];
+                case 12:
+                    console.log('Ingrese un campo valido');
+                    _a.label = 13;
+                case 13:
+                    ;
+                    console.log('El registro de Motos actualizado es:', Motos);
+                    nuevoRegistroStringificado = JSON.stringify(Motos);
+                    escribir_archivo_1.escribirArchivo('./registro-vengadores.txt', nuevoRegistroStringificado);
+                    queDeseaHacer().then().catch();
+                    return [2 /*return*/, Motos];
+            }
+        });
+    });
+}
+;
+function eliminarRegistro() {
+    return __awaiter(this, void 0, void 0, function () {
+        var idAEliminar, idEncontrado, registroBorrado;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, prompts({
+                        type: 'number',
+                        name: 'id',
+                        message: 'Ingrese el id de la Moto que desea eliminar'
+                    })];
+                case 1:
+                    idAEliminar = _a.sent();
+                    idEncontrado = Motos.findIndex(function (valorActual) {
+                        return valorActual.id == idAEliminar.Aid;
+                    });
+                    Motos.splice(idEncontrado, 1);
+                    registroBorrado = JSON.stringify(Motos);
+                    escribir_archivo_1.escribirArchivo('./moto.ejemplo.txt', registroBorrado);
+                    console.log('El nuevo registro de la moto es:', Motos);
+                    queDeseaHacer().then().catch();
+                    return [2 /*return*/, Motos];
+            }
+        });
+    });
+}
+;
+function main() {
+    escribirDatosMotos().then().catch();
+}
+main();
