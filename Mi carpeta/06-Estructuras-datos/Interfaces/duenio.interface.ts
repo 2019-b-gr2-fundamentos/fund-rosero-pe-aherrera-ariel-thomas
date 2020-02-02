@@ -1,6 +1,6 @@
 import {AnimalPerrito} from './animal_perrito.interface';
 
-export interface Duenio { //interface -> Definir la Struct
+export interface Duenio { 
     nombre: string;        
     apellido: string;
     cedula?: string;

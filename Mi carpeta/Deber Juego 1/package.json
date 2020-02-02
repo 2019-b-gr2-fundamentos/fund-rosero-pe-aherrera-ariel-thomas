@@ -1,0 +1,14 @@
+{
+  "name": "1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "puzzle": "(tsc Deber-juego-1.ts --target ES5|| echo) && node Deber-juego-1.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "prompts": "^2.3.0"
+  }
+}
