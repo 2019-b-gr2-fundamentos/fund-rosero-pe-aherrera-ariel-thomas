@@ -143,7 +143,16 @@ let valorD4 = matrizJuego[3][3];
 
 
 
-function MDiagonalSuperiorIzquierdo() {
+function MDiagonalInferiorDerecho() {
+    let valorD4 = matrizJuego[3][3];
+    let valorD3 = matrizJuego[3][2];
+    let valorC4 = matrizJuego[2][3]
+
+    if(valorD3) {
+        let Auxiliar1: valorD3;
+
+
+    }
 
 
 }
