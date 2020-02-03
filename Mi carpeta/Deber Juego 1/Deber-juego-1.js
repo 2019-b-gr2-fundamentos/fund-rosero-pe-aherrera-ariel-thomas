@@ -64,6 +64,7 @@ var terceraFila = [];
 var cuartaFila = [];
 function generarJuego() {
     return __awaiter(this, void 0, void 0, function () {
+        var matrizIncorrecta;
         return __generator(this, function (_a) {
             primeraFila = [-1, -1, -1, -1];
             do {
@@ -140,11 +141,8 @@ function generarJuego() {
                 ;
             } while (j < 4);
             matrizJuego[3].splice(3, 1, '');
-            //console.log(matrizJuego);
-            console.log(matrizJuego[0]);
-            console.log(matrizJuego[1]);
-            console.log(matrizJuego[2]);
-            console.log(matrizJuego[3]);
+            matrizIncorrecta = [matrizJuego[0], matrizJuego[1], matrizJuego[2], matrizJuego[3]];
+            console.log(matrizIncorrecta);
             return [2 /*return*/];
         });
     });
@@ -156,3 +154,7 @@ function main() {
 }
 ;
 main();
+console.log("No olvide que solo los numeros que esten al lado \n del espacio vacio podran ocupar este espacio");
+console.log(matrizJuego[0][0]);
+function MDiagonalSuperiorIzquierdo() {
+}

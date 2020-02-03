@@ -99,13 +99,16 @@ async function generarJuego(){
     }while(j < 4);
     matrizJuego[3].splice(3,1,'');
     //console.log(matrizJuego);
+    
+    const matrizIncorrecta = [ matrizJuego[0], matrizJuego[1], matrizJuego[2], matrizJuego[3] ]
+
+    console.log(matrizIncorrecta);       
+    /*
     console.log(matrizJuego[0]);
     console.log(matrizJuego[1]);
     console.log(matrizJuego[2]);
     console.log(matrizJuego[3]);
-    
-   
-
+    */
 };
 
 function main(){
@@ -115,6 +118,35 @@ function main(){
 };
 
 main();
+
+console.log("No olvide que solo los numeros que esten al lado \n del espacio vacio podran ocupar este espacio");
+
+let valorA1 = matrizJuego[0][0];
+let valorA2 = matrizJuego[0][1];
+let valorA3 = matrizJuego[0][2];
+let valorA4 = matrizJuego[0][3];
+
+let valorB1 = matrizJuego[1][0];
+let valorB2 = matrizJuego[1][1];
+let valorB3 = matrizJuego[1][2];
+let valorB4 = matrizJuego[1][3];
+
+let valorC1 = matrizJuego[2][0];
+let valorC2 = matrizJuego[2][1];
+let valorC3 = matrizJuego[2][2];
+let valorC4 = matrizJuego[2][3];
+
+let valorD1 = matrizJuego[3][0];
+let valorD2 = matrizJuego[3][1];
+let valorD3 = matrizJuego[3][2];
+let valorD4 = matrizJuego[3][3];
+
+
+
+function MDiagonalSuperiorIzquierdo() {
+
+
+}
 
 
 
