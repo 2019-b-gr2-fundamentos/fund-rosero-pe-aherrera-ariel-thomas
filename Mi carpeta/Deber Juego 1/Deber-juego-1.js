@@ -155,6 +155,27 @@ function main() {
 ;
 main();
 console.log("No olvide que solo los numeros que esten al lado \n del espacio vacio podran ocupar este espacio");
-console.log(matrizJuego[0][0]);
-function MDiagonalSuperiorIzquierdo() {
+var valorA1 = matrizJuego[0][0];
+var valorA2 = matrizJuego[0][1];
+var valorA3 = matrizJuego[0][2];
+var valorA4 = matrizJuego[0][3];
+var valorB1 = matrizJuego[1][0];
+var valorB2 = matrizJuego[1][1];
+var valorB3 = matrizJuego[1][2];
+var valorB4 = matrizJuego[1][3];
+var valorC1 = matrizJuego[2][0];
+var valorC2 = matrizJuego[2][1];
+var valorC3 = matrizJuego[2][2];
+var valorC4 = matrizJuego[2][3];
+var valorD1 = matrizJuego[3][0];
+var valorD2 = matrizJuego[3][1];
+var valorD3 = matrizJuego[3][2];
+var valorD4 = matrizJuego[3][3];
+function MDiagonalInferiorDerecho() {
+    var valorD4 = matrizJuego[3][3];
+    var valorD3 = matrizJuego[3][2];
+    var valorC4 = matrizJuego[2][3];
+    if (valorD3) {
+        var Auxiliar1 = void 0;
+    }
 }
