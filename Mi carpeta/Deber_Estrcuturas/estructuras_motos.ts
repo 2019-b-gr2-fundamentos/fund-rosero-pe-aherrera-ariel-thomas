@@ -36,7 +36,7 @@ async function crearDatosMotos(){
 
     const respuestaPreguntas = await prompts(preguntasMoto);
     const nuevoRegistroMoto = {
-        Aid: id,
+        id: id,
         Modelo: respuestaPreguntas.Modelo,
         Color: respuestaPreguntas.Color,
         Precio: respuestaPreguntas.Precio,
@@ -84,11 +84,11 @@ async function editarRegistro(){
     const AidAEditar = await prompts({
         type: 'number',
         name: 'Aid',
-        message: 'Ingrese el Aid de la Moto cuya informacion desea cambiar'
+        message: 'Ingrese el id de la Moto cuya informacion desea cambiar'
     });
     const AidEncontrado = arregloMotos.findIndex(
         function(valorActual){
-        return valorActual.Aid == AidAEditar.Aid
+        return valorActual.id == AidAEditar.Aid
         }
     );
     const queDeseaEditar = await prompts({
@@ -144,12 +144,12 @@ async function editarRegistro(){
 async function eliminarRegistro(){
     const AidAEliminar = await prompts({
         type: 'number',
-        name: 'Aid',
-        message: 'Ingrese el Aid de la moto cuya informacion desea eliminar'
+        name: 'id',
+        message: 'Ingrese el id de la moto cuya informacion desea eliminar'
     });
     const AidEncontrado = arregloMotos.findIndex(
         function(valorActual){
-        return valorActual.Aid == AidAEliminar.Aid
+        return valorActual.id == AidAEliminar.Aid
         }
     );
     arregloMotos.splice(AidEncontrado, 1);

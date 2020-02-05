@@ -76,7 +76,7 @@ function crearDatosMotos() {
                 case 1:
                     respuestaPreguntas = _a.sent();
                     nuevoRegistroMoto = {
-                        Aid: id,
+                        id: id,
                         Modelo: respuestaPreguntas.Modelo,
                         Color: respuestaPreguntas.Color,
                         Precio: respuestaPreguntas.Precio,
@@ -149,12 +149,12 @@ function editarRegistro() {
                 case 0: return [4 /*yield*/, prompts({
                         type: 'number',
                         name: 'Aid',
-                        message: 'Ingrese el Aid de la Moto cuya informacion desea cambiar'
+                        message: 'Ingrese el id de la Moto cuya informacion desea cambiar'
                     })];
                 case 1:
                     AidAEditar = _a.sent();
                     AidEncontrado = arregloMotos.findIndex(function (valorActual) {
-                        return valorActual.Aid == AidAEditar.Aid;
+                        return valorActual.id == AidAEditar.Aid;
                     });
                     return [4 /*yield*/, prompts({
                             type: 'text',
@@ -239,13 +239,13 @@ function eliminarRegistro() {
             switch (_a.label) {
                 case 0: return [4 /*yield*/, prompts({
                         type: 'number',
-                        name: 'Aid',
-                        message: 'Ingrese el Aid de la moto cuya informacion desea eliminar'
+                        name: 'id',
+                        message: 'Ingrese el id de la moto cuya informacion desea eliminar'
                     })];
                 case 1:
                     AidAEliminar = _a.sent();
                     AidEncontrado = arregloMotos.findIndex(function (valorActual) {
-                        return valorActual.Aid == AidAEliminar.Aid;
+                        return valorActual.id == AidAEliminar.Aid;
                     });
                     arregloMotos.splice(AidEncontrado, 1);
                     console.log('El nuevo registro de la Moto es:', arregloMotos);

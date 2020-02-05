@@ -1,1 +1,1 @@
-[{"id":0,"Modelo":"GSX-R750","Color":"Verde Oscuro","Precio":21391.87,"Fuerza":750,"Marca":"Suzuki"},{"id":1,"Modelo":"GD115","Color":"Azul","Precio":1881,"Fuerza":113,"Marca":"Suzuki"}]
+[{"id":1,"Modelo":"GSX-R750","Color":"Negro","Precio":21391.87,"Fuerza":750,"Marca":"Suzuki"}]
